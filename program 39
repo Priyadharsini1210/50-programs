@@ -1,0 +1,19 @@
+using System;
+using System.IO;
+using System.IO.Compression;
+
+class ZipCompression
+{
+    static void Main()
+    {
+        string filePath = "example.txt";
+        string zipFilePath = "example.zip";
+
+        // Create a sample file
+        File.WriteAllText(filePath, "This is a sample text file to compress.");
+
+        // Compress the file
+        ZipFile.CreateFromDirectory(Directory.GetCurrentDirectory(), zipFilePath);
+        Console.WriteLine("File compressed successfully.");
+    }
+}
