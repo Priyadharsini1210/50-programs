@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+
+class TodoList
+{
+    static List<string> tasks = new List<string>();
+
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("\n1. Add Task");
+            Console.WriteLine("2. Remove Task");
+            Console.WriteLine("3. Show Tasks");
+            Console.WriteLine("4. Exit");
+
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    AddTask();
+                    break;
+                case 2:
+                    RemoveTask();
+                    break;
+                case 3:
+                    ShowTasks();
+                    break;
+                case 4:
+                    return;
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    break;
+            }
+        }
+    }
+
+    static void AddTask()
+    {
+        Console.WriteLine("Enter task to add:");
+        string task = Console.ReadLine();
+        tasks.Add(task);
+        Console.WriteLine("Task added.");
+    }
+
+    static void RemoveTask()
+    {
+        Console.WriteLine("Enter task number to remove:");
+        ShowTasks();
+        int taskIndex = Convert.ToInt32(Console.ReadLine()) - 1;
+
+        if (taskIndex >= 0 && taskIndex < tasks.Count)
+        {
+            tasks.RemoveAt(taskIndex);
+            Console.WriteLine("Task removed.");
+        }
+        else
+        {
+            Console.WriteLine("Invalid task number.");
+        }
+    }
+
+    static void ShowTasks()
+    {
+        if (tasks.Count == 0)
+        {
+            Console.WriteLine("No tasks available.");
+        }
+        else
+        {
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {tasks[i]}");
+            }
+        }
+    }
+}
