@@ -1,0 +1,31 @@
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class CurrencyConverter
+{
+    static async Task Main()
+    {
+        string baseCurrency = "USD";
+        string targetCurrency = "EUR";
+        double amount = 100;
+
+        double conversionRate = await GetConversionRate(baseCurrency, targetCurrency);
+        double convertedAmount = amount * conversionRate;
+
+        Console.WriteLine($"{amount} {baseCurrency} is equal to {convertedAmount} {targetCurrency}");
+    }
+
+    static async Task<double> GetConversionRate(string baseCurrency, string targetCurrency)
+    {
+        string apiKey = "your_api_key_here";
+        string url = $"https://api.exchangerate-api.com/v4/latest/{baseCurrency}";
+
+        using (HttpClient client = new HttpClient())
+        {
+            string response = await client.GetStringAsync(url);
+            dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(response);
+            return data.rates[targetCurrency];
+        }
+    }
+}
