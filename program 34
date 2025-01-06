@@ -1,0 +1,24 @@
+using System;
+
+class LCM
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter two numbers:");
+        int num1 = Convert.ToInt32(Console.ReadLine());
+        int num2 = Convert.ToInt32(Console.ReadLine());
+
+        int lcm = (num1 * num2) / GCD(num1, num2);
+        Console.WriteLine($"LCM is: {lcm}");
+    }
+
+    static int GCD(int a, int b)
+    {
+        while (a != b)
+        {
+            if (a > b) a -= b;
+            else b -= a;
+        }
+        return a;
+    }
+}
