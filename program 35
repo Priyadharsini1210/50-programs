@@ -1,0 +1,23 @@
+using System;
+
+class VowelConsonantCount
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter a string:");
+        string input = Console.ReadLine().ToLower();
+
+        int vowels = 0, consonants = 0;
+
+        foreach (char c in input)
+        {
+            if ("aeiou".Contains(c))
+                vowels++;
+            else if (char.IsLetter(c))
+                consonants++;
+        }
+
+        Console.WriteLine($"Vowels: {vowels}");
+        Console.WriteLine($"Consonants: {consonants}");
+    }
+}
