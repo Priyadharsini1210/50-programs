@@ -1,0 +1,25 @@
+using System;
+public class DownwardTriangleStarPattern
+{
+    public static void Main()
+    {
+        Console.WriteLine("Enter number of Rows :");
+        int rows = Convert.ToInt32(Console.ReadLine());
+        for (int i = rows - 1; i >= 0; i--)
+        {
+            //j<=i  //let rows = 5
+            /* first row (0 to 5) = 5 stars
+             * second row (0 to 4) = 4 stars
+             * third row (0 to 3) = 3 stars
+             * and so on
+            */
+            //calculate stars for each row one by one
+            for (int j = 0; j <= i; j++)
+            {
+                Console.Write("* ");
+            }
+            Console.WriteLine();
+        }
+        Console.ReadLine();
+    }
+}
