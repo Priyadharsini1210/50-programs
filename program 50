@@ -1,0 +1,22 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter the main string: ");
+        string mainString = Console.ReadLine();
+
+        Console.Write("Enter the substring: ");
+        string subString = Console.ReadLine();
+
+        if (mainString.Contains(subString))
+        {
+            Console.WriteLine($"'{subString}' is a substring of '{mainString}'");
+        }
+        else
+        {
+            Console.WriteLine($"'{subString}' is NOT a substring of '{mainString}'");
+        }
+    }
+}
